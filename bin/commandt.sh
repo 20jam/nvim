@@ -3,8 +3,11 @@
 # Install Ruby
 sudo pacman -S ruby ---noconfirm
 sudo chown -R $(whoami) /usr/local/bin
-# Install bundler
+# Install bundler and neovim
 gem install bundler
-# Install neovim support
 gem install neovim
 
+# Other requirements
+
+pip install commandt.score
+pip install redis
