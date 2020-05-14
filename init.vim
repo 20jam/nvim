@@ -55,7 +55,8 @@ call utils#source_file($VIM_PATH,'bin/dein.vim')
 
 " Source Internal Modules
 call utils#source_file($VIM_PATH,'modules/mappings.vim')
-" call utils#source_file($VIM_PATH,'modules/settings.vim')
+call utils#source_file($VIM_PATH,'modules/theme.vim')
+call utils#source_file($VIM_PATH,'modules/settings.vim')
 " call utils#source_file($VIM_PATH,'modules/filetypes.vim')
 
 set secure

@@ -1,0 +1,2 @@
+- repo: Shougo/dein.vim
+  on_func: dein#

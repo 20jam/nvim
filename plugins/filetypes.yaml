@@ -1,0 +1,101 @@
+# Web develop support
+- { repo: hail2u/vim-css3-syntax, on_ft: css }
+- { repo: othree/csscomplete.vim, on_ft: css }
+- { repo: cakebaker/scss-syntax.vim, on_ft: [ scss, sass ]}
+- { repo: groenewege/vim-less, on_ft: less }
+- { repo: iloginow/vim-stylus, on_ft: stylus }
+- repo: othree/html5.vim
+  on_ft: html
+  hook_add: |
+    let g:html5_event_handler_attributes_complete = 0
+    let g:html5_rdfa_attributes_complete = 0
+    let g:html5_microdata_attributes_complete = 0
+    let g:html5_aria_attributes_complete = 0
+
+# Php support
+# LanguageServerProtocol use for php
+# https://github.com/bmewburn/vscode-intelephense
+- { repo: StanAngeloff/php.vim,on_ft: php }
+
+# Typescript and React support
+# LanguageServerProtocol used by coc-tsserver
+- { repo: leafgarland/typescript-vim,on_ft: [ typescript, typescriptreact ]}
+- { repo: peitalin/vim-jsx-typescript,on_ft: [typescriptreact ]}
+
+# json support
+# LanguageServerProtocol for json by thinkvim default
+- { repo: elzr/vim-json, on_ft: json }
+
+# Vue support
+# LanguageServerProtocol used by coc-vetur
+- { repo: posva/vim-vue,on_ft: vue }
+
+# Javascript and React support
+# LanguageServerProtocol use coc-tsserver extensions
+- { repo: neoclide/vim-jsx-improve,on_ft: [ javascript,javascriptreact ]}
+- { repo: moll/vim-node, on_ft: [ javascript, javascriptreact ] }
+- { repo: jparise/vim-graphql, on_ft: [ javascript, javascriptreact ] }
+
+# Toml support
+- { repo: cespare/vim-toml, on_ft: toml }
+
+# Shel zsh support
+# LanguageServerProtocol used by https://github.com/bash-lsp/bash-language-server
+- { repo: arzg/vim-sh,on_ft: [ sh,zsh ]}
+
+# Python support
+# LanguageServerProtocol used by coc-python
+# default of coc-python is mpls you can choose pyls
+- { repo: vim-python/python-syntax,on_ft: python }
+- { repo: Vimjas/vim-python-pep8-indent, on_ft: python }
+- { repo: vim-scripts/python_match.vim, on_ft: python }
+- { repo: raimon49/requirements.txt.vim, on_ft: requirements }
+
+# C support
+- { repo: arakashic/chromatica.nvim, on_ft: [ c,cpp ]}
+
+# Markdown
+
+- repo: plasticboy/vim-markdown
+  on_ft: markdown
+  hook_add: |
+    let g:vim_markdown_folding_level = 1
+    let g:vim_markdown_folding_style_pythonic = 1
+    let g:vim_markdown_frontmatter = 1
+    let g:vim_markdown_auto_insert_bullets = 1
+    let g:vim_markdown_new_list_item_indent = 0
+    let g:vim_markdown_conceal_code_blocks = 0
+    let g:vim_markdown_conceal = 0
+    let g:vim_markdown_strikethrough = 1
+    let g:vim_markdown_edit_url_in = 'vsplit'
+    let g:vim_markdown_fenced_languages = [
+      \ 'c++=cpp',
+      \ 'viml=vim',
+      \ 'bash=sh',
+      \ 'ini=dosini',
+      \ 'js=javascript',
+      \ 'json=javascript',
+      \ 'jsx=javascriptreact',
+      \ 'tsx=typescriptreact',
+      \ 'docker=Dockerfile',
+      \ 'makefile=make',
+      \ 'py=python'
+      \ ]
+
+- repo: rhysd/vim-gfm-syntax
+  depends: vim-markdown
+  on_ft: markdown
+  hook_add: |
+    let g:gfm_syntax_enable_always = 0
+    let g:gfm_syntax_highlight_emoji = 0
+    let g:gfm_syntax_enable_filetypes = ['markdown']
+
+- repo: iamcco/markdown-preview.nvim
+  on_ft: [markdown,pandoc.markdown,rmd]
+  build: 'sh -c "cd app & yarn install"'
+  hook_source: |
+      let g:mkdp_auto_start = 0
+
+### Other
+
+- { repo: MTDL9/vim-log-highlighting, on_ft: log }
