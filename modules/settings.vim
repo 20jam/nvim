@@ -99,6 +99,9 @@ set noshowmode
 " Don't redraw during macro playback
 set lazyredraw
 
+set ttyfast    " Improves smoothness of redrawing
+
+
 " Don't redraw singlecolumn
 set signcolumn=no
 
@@ -173,6 +176,8 @@ set splitright
 " try to reuse windows/tabs when switching buffers
 set switchbuf=usetab
 
+set visualbell noerrorbells t_vb= " Turn off error beep/flash
+
 "}}}-----------------------------------------
 
 " Folding {{{
@@ -192,8 +197,12 @@ set diffopt+=foldcolumn:0
 
 " Misc {{{
 
-" Limit History saving to a size
-set history=1000
+" Number of history to be saved
+set history=100
+
+" Number of undos to be saved
+set undolevels=1000
+
 
 " Use buffer directory for file browsing
 set bsdir=buffer
@@ -203,9 +212,10 @@ if exists('&inccommand')
   set inccommand=split
 endif
 
+" Shell
 " set shell=zsh                       
 execute 'set shell=' . (filereadable('/bin/zsh') ? '/bin/zsh' : 'bin/bash')
-
+" set shell=/usr/bin/zsh
 " prevent bsb's watch mode from getting confused
 if has('wildignore')
   set backupskip+=*.re,*.rei
