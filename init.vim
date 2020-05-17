@@ -33,7 +33,7 @@ let g:loaded_netrwFileHandlers = 1
 " Initialize base requirements
 if has('vim_starting')
 	let g:mapleader="\<Space>"
-	let g:maplocalleader="'"
+	let g:maplocalleader=";"
 
 	" Release keymappings prefixes, some functionality will be lost. such as
 	" marker
@@ -45,8 +45,8 @@ if has('vim_starting')
 	xn ;        <Nop>
 	nn s      	<Nop>
 	xn s      	<Nop>
-	nn '      	<Nop>
-	xn '      	<Nop>
+  " nn '      	<Nop>
+  " xn '      	<Nop>
 
 endif
 
@@ -57,7 +57,7 @@ call utils#source_file($VIM_PATH,'bin/dein.vim')
 call utils#source_file($VIM_PATH,'modules/mappings.vim')
 call utils#source_file($VIM_PATH,'modules/theme.vim')
 call utils#source_file($VIM_PATH,'modules/settings.vim')
-" call utils#source_file($VIM_PATH,'modules/filetypes.vim')
+call utils#source_file($VIM_PATH,'modules/autocmd.vim')
 
 set secure
 
