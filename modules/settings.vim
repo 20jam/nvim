@@ -11,14 +11,13 @@ if has('linebreak')
 endif
 
 if has('linebreak')
-  let &showbreak='  '
+  let &showbreak=' '
 endif
 
 " show whitespace
-set list                              
-
-set listchars=nbsp:⦸                  
-set listchars+=tab:▷┅
+set list
+set listchars=nbsp:⦸
+set listchars+=tab:»┅
 set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=trail:•
@@ -53,8 +52,8 @@ set softtabstop=2
 set shiftwidth=2
 
       
-	set smartindent     " Smart autoindenting on new lines
-	set shiftround      " Round indent to multiple of 'shiftwidth'
+  set smartindent     " Smart autoindenting on new lines
+  set shiftround      " Round indent to multiple of 'shiftwidth'
 
 
 " smart auto-indenting inside numbered lists
@@ -124,13 +123,13 @@ set fillchars+=eob:\
 
 " Sync with corresponding nvim :highlight commands in /modules/autocmds.vim
 " ~/@ at end of window, 'showbreak'
-set highlight+=@:Conceal
+" set highlight+=@:Conceal
 " override DiffDelete
-set highlight+=D:Conceal
+" set highlight+=D:Conceal
 " make current line number stand out a little
-set highlight+=N:FoldColumn
+" set highlight+=N:FoldColumn
 " blend vertical separators with line numbers
-set highlight+=c:LineNr
+" set highlight+=c:LineNr
 
 " Transparent background for popupmenu
 set pumblend=15 
@@ -152,17 +151,17 @@ set pumheight=15        " Pop-up menu's line height
 set helpheight=12       " Minimum help window height
 set previewheight=12    " Completion preview height
 if exists('+previewpopup')
-	set previewpopup=height:10,width:60
+  set previewpopup=height:10,width:60
 endif
 
 " Pseudo-transparency for completion menu and floating windows
 if &termguicolors
-	if exists('&pumblend')
-		set pumblend=10
-	endif
-	if exists('&winblend')
-		set winblend=10
-	endif
+  if exists('&pumblend')
+    set pumblend=10
+  endif
+  if exists('&winblend')
+    set winblend=10
+  endif
 endif
 
 "}}}-----------------------------------------
@@ -237,12 +236,12 @@ endif
 " Make ESC work in terminal
 
 function s:exit_to_normal() abort
-		if &filetype ==# 'fzf'
-			return "\<Esc>"
-		endif
-		return "\<C-\>\<C-n>"
-	endfunction
-	tnoremap <expr> <Esc> <SID>exit_to_normal()
+    if &filetype ==# 'fzf'
+      return "\<Esc>"
+    endif
+    return "\<C-\>\<C-n>"
+  endfunction
+  tnoremap <expr> <Esc> <SID>exit_to_normal()
 
 if has('virtualedit')
   set virtualedit=block               " allow cursor to move where there is no text in visual block mode
@@ -263,20 +262,20 @@ set synmaxcol=2500           " Don't syntax highlight long lines
 set viewoptions=folds,cursor,curdir,slash,unix
 set sessionoptions=curdir,help,tabpages,winsize
 
-	set viminfo='300,<10,@50,h,n$DATA_PATH/viminfo
+  set viminfo='300,<10,@50,h,n$DATA_PATH/viminfo
 
 " Secure sensitive information, disable backup files in temp directories
 if exists('&backupskip')
-	set backupskip+=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*
-	set backupskip+=.vault.vim
+  set backupskip+=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*
+  set backupskip+=.vault.vim
 endif
 
 " Disable swap/undo/viminfo/shada files in temp directories or shm
 augroup user_secure
-	autocmd!
-	silent! autocmd BufNewFile,BufReadPre
-		\ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim
-		\ setlocal noswapfile noundofile nobackup nowritebackup viminfo= shada=
+  autocmd!
+  silent! autocmd BufNewFile,BufReadPre
+    \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim
+    \ setlocal noswapfile noundofile nobackup nowritebackup viminfo= shada=
 augroup END
 
 "}}}-----------------------------------------
@@ -341,11 +340,11 @@ set cpoptions-=m
 " Set rg or ag for searching
 " set grepprg=rg\ --vimgrep\ $*
 if executable('rg')
-	set grepformat=%f:%l:%m
-	let &grepprg = 'rg --vimgrep' . (&smartcase ? ' --smart-case' : '')
+  set grepformat=%f:%l:%m
+  let &grepprg = 'rg --vimgrep' . (&smartcase ? ' --smart-case' : '')
 elseif executable('ag')
-	set grepformat=%f:%l:%m
-	let &grepprg = 'ag --vimgrep' . (&smartcase ? ' --smart-case' : '')
+  set grepformat=%f:%l:%m
+  let &grepprg = 'ag --vimgrep' . (&smartcase ? ' --smart-case' : '')
 endif
 
 "}}}-----------------------------------------
@@ -364,22 +363,21 @@ set completeopt-=preview
 " set path+=**
 " Provides completion for all file-related tasks
 
-	if has('conceal')
-		set conceallevel=3 concealcursor=niv
-	endif
+  if has('conceal')
+    set conceallevel=3 concealcursor=niv
+  endif
 "
 
 set wildcharm=<C-z>                   " substitute for 'wildchar' (<Tab>) in macros
 
 set wildmenu                        " show options as list when switching buffers etc
-endif
 
-	set wildignorecase
-	set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
-	set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
-	set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
-	set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
-	set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
+  set wildignorecase
+  set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
+  set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
+  set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
+  set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
+  set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 
 set complete=.,w,b,k  " C-n completion: Scan buffers, windows and dictionary
 
