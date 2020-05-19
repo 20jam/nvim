@@ -24,12 +24,16 @@ nn <localleader>w <cmd>write<cr>
 " }}}----------------------------------------------------------------
 "
 " Leader {{{
+" just being lazy
 nn <leader><leader> V
 xn <leader><leader> <esc>
-"
+nn ' :
+nn <leader>a A
+nn <leader>i I
+
 nn <leader>w <cmd>write<cr>
-"nn <leader>q <cmd>quit<cr>
 nn <leader>q q
+nn q <cmd>quit<cr>
 "nn <leader>d <cmd>bd<cr>
 nn <leader>n <Cmd>ToggleNumber<CR>
 
@@ -65,31 +69,32 @@ nn  [win]   <nop>
 nm      s [win]
 
 " Buffers Navigation
-nn [win]. <cmd>bn<cr>
-nn [win], <cmd>bp<cr>
-nn [win]j <cmd>bn<cr>
-nn [win]k <cmd>bp<cr>
+nn <leader>j <cmd>bn<cr>
+nn <leader>k <cmd>bp<cr>
 " nn [win]] <cmd>bn<cr>
 " nn [win][ <cmd>bp<cr>
 nn [win]<leader> <cmd>b#<cr>
 " Buffer commands
-nn [win]c <cmd>bd<cr>
+nn <leader>c <cmd>bd<cr>
 " Splits Navigation
+" nn <C-l> <C-w><c-k>
+" nn <C-h> <C-w><c-j>
+" nn <C-j> <C-w><C-h>
+" nn <C-k> <C-w><C-l>
+" nn <C-w> <C-w><C-w>
+" nn [win]s <cmd>wincmd w<cr>
 " nn [win]j <cmd>wincmd h<cr>
 " nn [win]k <cmd>wincmd l<cr>
-" nn [win]l <cmd>wincmd k<cr>
 " nn [win]h <cmd>wincmd j<cr>
-nn <C-l> <C-w><c-k>
-nn <C-h> <C-w><c-j>
-nn <C-j> <C-w><C-h>
-nn <C-k> <C-w><C-l>
-nn <C-w> <C-w><C-w>
-nn [win]s <cmd>wincmd w<cr>
+" nn [win]n <cmd>wincmd j<cr>
+" knn [win]n <cmd>DWM_New<cr>
+" nn [win]l <cmd>wincmd k<cr>
+
 " Splits commands
-nn [win]v <cmd>vs<cr>
-nn [win]f <cmd>sp<cr>
+" nn [win]v <cmd>vs<cr>
+" nn [win]f <cmd>sp<cr>
 nn [win]o <cmd>only<cr>
-nn [win]d <cmd>quit<cr>
+" nn [win]d <cmd>quit<cr>
 " Tabs Navigation
 no [win]g <cmd>tabprevious<CR>
 no [win]; <cmd>tabnext<CR>
@@ -100,6 +105,10 @@ no [win]q <cmd>:wqa<CR>
 " }}}
 "
 " Normal Mode {{{
+"
+" A
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
 
 " All
 nn L $
@@ -121,8 +130,9 @@ nn <silent> <C-h> :noh<CR>
 
 " g
 nn gq gwap
-nm go :call modules#mappings#OpenLinkUnderCursor()<cr>
+" nm go :call modules#mappings#OpenLinkUnderCursor()<cr>
 nn g! :<C-u>put=execute('')<Left><Left>
+
 
 " q: Making quiting with q 
 nn <silent><buffer> q :quit<CR>
