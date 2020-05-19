@@ -1,0 +1,71 @@
+# Crtl-p
+
+# f5 to recach
+# c-f and c-b to switch between modes
+# c-d to switch to file name insted of paths
+# c-p and c-b to select pervious history input
+# c-j and c-k to navigate the list
+# c-y to create a new file in current directory
+# type .. to go up a level
+
+- repo: ctrlpvim/ctrlp.vim
+  hook_source: |
+        let g:ctrlp_status_func = {'':''}
+        let g:ctrlp_follow_symlinks = 1
+        let g:ctrlp_default_input = 0
+        let g:ctrlp_line_prefix = ' '
+        let g:ctrlp_open_single_match = ['buffer tags', 'buffer']
+        let g:ctrlp_working_path_mode = 'ra'
+        let g:ctrlp_switch_buffer = 'Et'
+        let g:ctrlp_mruf_exclude = '.*/tmp/.*\|.*/.git/.*'
+        let g:ctrlp_show_hidden = 1
+        let g:ctrlp_max_files = 200000
+        if exists('g:ctrlp_user_command')
+          unlet g:ctrlp_user_command
+        endif
+        if executable('rg')
+          let g:ctrlp_user_command =
+            \ 'rg %s --files --color=never --smart-case --hidden --maxdepth 10 --glob "!.git/*"'
+          let g:ctrlp_use_caching = 0
+        else
+          let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+          let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+        endif
+        nnoremap <leader>f <cmd>CtrlP<cr>
+        nnoremap <leader>b <cmd>CtrlPBuffer<cr>
+
+# Ag extention for Crtl-p (Need to be compaired
+#
+# ag options
+# -U : Ignore VCS ignore files (.gitignore) but still use .ignore.
+# -l : Only print the names of files containing matches, not the matching lines.
+# -i : ignore cases
+# -g : print filenames matching PATTERN
+# --[no]group : group or not to group matches in the same file togther.
+
+- repo: lokikl/vim-ctrlp-ag
+  hook_source: |
+    nnoremap <c-f> :CtrlPag<cr>
+    nnoremap <localleader>f :CtrlPag<cr>
+    vnoremap <c-f> :CtrlPagVisual<cr>
+    vnoremap <localleader>f :CtrlPagVisual<cr>
+    nnoremap <leader>ca :CtrlPagLocate
+    nnoremap <leader>cp :CtrlPagPrevious<cr>
+    let g:ctrlp_ag_ignores = '--ignore .git
+        \ --ignore "deps/*"
+        \ --ignore "_build/*"
+        \ --ignore "node_modules/*"'
+
+# Open under cursor
+
+- repo: tyru/open-browser.vim
+  hook_source: |
+      nmap go <Plug>(openbrowser-smart-search)
+      vmap go <Plug>(openbrowser-smart-search)
+      let g:openbrowser_browser_commands = [
+        \ {"name": "firefox",
+        \  "args": ["{browser}", "{uri}"]},
+      \]
+      let g:openbrowser_default_search = 'duckduckgo'
+
+# -----------------------------------------------------------------------------
