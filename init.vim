@@ -1,3 +1,6 @@
+
+set termguicolors
+
 if &compatible
 	" vint: -ProhibitSetNoCompatible
 	set nocompatible
@@ -60,8 +63,6 @@ call utils#source_file($VIM_PATH,'modules/settings.vim')
 call utils#source_file($VIM_PATH,'modules/autocmd.vim')
 call utils#source_file($VIM_PATH,'modules/dwm.vim')
 call utils#source_file($VIM_PATH,'modules/apis.vim')
-
-set termguicolors
 
 set secure
 
