@@ -11,6 +11,7 @@
 - repo: ctrlpvim/ctrlp.vim
   hook_source: |
         let g:ctrlp_status_func = {'':''}
+        let g:ctrlp_map = '<c-,>'
         let g:ctrlp_follow_symlinks = 1
         let g:ctrlp_default_input = 0
         let g:ctrlp_line_prefix = ' '
@@ -46,11 +47,8 @@
 - repo: lokikl/vim-ctrlp-ag
   hook_source: |
     nnoremap <c-f> :CtrlPag<cr>
-    nnoremap <localleader>f :CtrlPag<cr>
     vnoremap <c-f> :CtrlPagVisual<cr>
-    vnoremap <localleader>f :CtrlPagVisual<cr>
-    nnoremap <leader>ca :CtrlPagLocate
-    nnoremap <leader>cp :CtrlPagPrevious<cr>
+    vnoremap <c-f> :CtrlPagVisual<cr>
     let g:ctrlp_ag_ignores = '--ignore .git
         \ --ignore "deps/*"
         \ --ignore "_build/*"
