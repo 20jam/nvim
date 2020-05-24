@@ -1,3 +1,6 @@
 - repo: Shougo/dein.vim
   on_func: dein#
 
+- repo: norcalli/nvim-colorizer.lua
+  on_ft: [ html,cpp,css,sass,scss,stylus,vim,javascript,javascriptreact,typescript,typescriptreact ]
+  hook_source: luafile $VIM_PATH/modules/colorizer.lua
