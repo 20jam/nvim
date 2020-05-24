@@ -1,10 +1,9 @@
-
 set termguicolors
 
 if &compatible
-	" vint: -ProhibitSetNoCompatible
-	set nocompatible
-	" vint: +ProhibitSetNoCompatible
+  " vint: -ProhibitSetNoCompatible
+  set nocompatible
+  " vint: +ProhibitSetNoCompatible
 endif
 
 " Set main configuration directory as current directory (Perhaps nonimportant :P)
@@ -35,36 +34,32 @@ let g:loaded_netrwFileHandlers = 1
 
 " Initialize base requirements
 if has('vim_starting')
-	let g:mapleader="\<Space>"
-	let g:maplocalleader=";"
-
-	" Release keymappings prefixes, some functionality will be lost. such as
-	" marker
-	nn <Space>  <Nop>
-	xn <Space>  <Nop>
-	nn ,        <Nop>
-	xn ,        <Nop>
-	nn ;        <Nop>
-	xn ;        <Nop>
-	nn s      	<Nop>
-	xn s      	<Nop>
-  " nn '      	<Nop>
-  " xn '      	<Nop>
+  let g:mapleader="\<Space>"
+  let g:maplocalleader=" "
+  " Release keymappings prefixes, some functionality will be lost. such as
+  " marker
+  nn <Space>  <Nop>
+  xn <Space>  <Nop>
+  nn ,        <Nop>
+  xn ,        <Nop>
+  nn ;        <Nop>
+  xn ;        <Nop>
+  nn s        <Nop>
+  xn s        <Nop>
+  " nn '        <Nop>
+  " xn '        <Nop>
 
 endif
 
 " Init Dein Plugin Manager
-call utils#source_file($VIM_PATH,'bin/dein.vim')
 
 " Source Internal Modules
+call utils#source_file($VIM_PATH,'bin/dein.vim')
 call utils#source_file($VIM_PATH,'modules/mappings.vim')
 call utils#source_file($VIM_PATH,'modules/theme.vim')
 call utils#source_file($VIM_PATH,'modules/settings.vim')
 call utils#source_file($VIM_PATH,'modules/autocmd.vim')
-call utils#source_file($VIM_PATH,'modules/dwm.vim')
 call utils#source_file($VIM_PATH,'modules/apis.vim')
+call utils#source_file($VIM_PATH,'modules/commands.vim')
 
 set secure
-
-" vim: set ts=2 sw=2 tw=80 noet :
-
