@@ -1,15 +1,15 @@
 augroup GeneralAutocmd " {{{
   autocmd!
 
-  " Reload vim config automatically
-  autocmd BufWritePost $VIM_PATH/modules/{*.vim,*.yaml,vimrc} nested
-        \ source $MYVIMRC | redraw
+" Reload vim config automatically
+autocmd BufWritePost $VIM_PATH/modules/{*.vim,*.yaml,vimrc} nested
+    " \ source $MYVIMRC | redraw
 
-  " Reload Vim script automatically if setlocal autoread
-  autocmd BufWritePost,FileWritePost *.vim nested
-    \ if &l:autoread > 0 | source <afile> |
-    \   echo 'source ' . bufname('%') |
-    \ endif
+" Reload Vim script automatically if setlocal autoread
+" autocmd BufWritePost,FileWritePost *.vim nested
+"   \ if &l:autoread > 0 | source <afile> |
+"   \   echo 'source ' . bufname('%') |
+"   \ endif
 
   " Update filetype on save if empty
   autocmd BufWritePost * nested
@@ -42,6 +42,7 @@ augroup GeneralAutocmd " {{{
   autocmd VimLeave *.tex !texclear %
 
   " Allow saving of files as sudo when I forgot to start vim using sudo.
+  " TODO: fix problem no password
   cmap w!! w !sudo tee > /dev/null %
 
   " Run shell scripts when editing those files
