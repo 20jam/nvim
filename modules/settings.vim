@@ -4,6 +4,8 @@ if has('vim_starting')
   scriptencoding UTF-8 
 endif
 
+set conceallevel=2
+
 " Text view {{{
 
 if has('linebreak')
@@ -17,10 +19,10 @@ endif
 " show whitespace
 set list
 set listchars=nbsp:⦸
-set listchars+=tab:»┅
-set listchars+=extends:»
-set listchars+=precedes:«
-set listchars+=trail:•
+set listchars+=tab:»»
+" set listchars+=extends:»
+" set listchars+=precedes:«
+" set listchars+=trail:•
 "set listchars=tab:»·,nbsp:+,trail:·,extends:→,precedes:←
 
 " don't autoinsert two spaces after '.', '?', '!' for join command
@@ -51,9 +53,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-      
-  set smartindent     " Smart autoindenting on new lines
-  set shiftround      " Round indent to multiple of 'shiftwidth'
+" Smart autoindenting on new lines
+set smartindent     
+" Round indent to multiple of 'shiftwidth'
+set shiftround      
 
 
 " smart auto-indenting inside numbered lists
