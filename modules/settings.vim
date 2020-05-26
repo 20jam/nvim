@@ -82,6 +82,7 @@ set cmdheight=1
 
 set scrolloff=2         " Keep at least 2 lines above/below
 
+" TODO: FIX
 set fcs=eob:\           " hide ~ tila
 
 " always show status line
@@ -105,7 +106,7 @@ set ttyfast    " Improves smoothness of redrawing
 
 
 " Don't redraw singlecolumn
-set signcolumn=no
+" set signcolumn=yes
 
 " if exists('+colorcolumn')
   " Highlight up to 254
@@ -423,3 +424,4 @@ set viewdir=$DATA_PATH/view/
 set spellfile=$VIM_PATH/spell/en.utf-8.add
 
 " }}}
+"

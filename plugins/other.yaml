@@ -7,3 +7,18 @@
 - repo: justinmk/vim-dirvish
   hook_add: source $VIM_PATH/modules/dirvish.vim
 
+# Show a diff in sign column
+- repo: mhinz/vim-signify
+  hook_add: |
+    let g:signify_vcs_list = [ 'git' ]
+    let g:signify_sign_show_count = 1
+    let g:signify_sign_show_text = 1
+    let g:signify_sign_change = '!'
+    nmap <leader>gj <plug>(signify-next-hunk)
+    nmap <leader>gk <plug>(signify-prev-hunk)
+    nnoremap <leader>gd :SignifyDiff<cr>
+    nnoremap <leader>gu :SignifyHunkUndo<cr>
+    omap ic <plug>(signify-motion-inner-pending)
+    xmap ic <plug>(signify-motion-inner-visual)
+    omap ac <plug>(signify-motion-outer-pending)
+    xmap ac <plug>(signify-motion-outer-visual)

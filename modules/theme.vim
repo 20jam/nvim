@@ -91,10 +91,12 @@ function s:CheckColorScheme()
   highlight LineNr ctermfg=NONE ctermbg=NONE
   highlight clear LineNr
   highlight clear SignColumn
-  " highlight Folded gui=italic guifg=gui05 guibg=NONE
+  highlight SignifySignAdd guibg=NONE
+  highlight SignifySignDelete guibg=NONE
+  highlight SignifySignChange guibg=NONE
   highlight Folded gui=italic guibg=NONE
   highlight Comment gui=italic guibg=NONE
-
+  "
 endfunction
 
 call s:CheckColorScheme()
