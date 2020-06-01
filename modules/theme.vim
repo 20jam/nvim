@@ -23,28 +23,28 @@ function s:CheckColorScheme()
   if !has('termguicolors')
     let g:base16colorspace=256
   endif
-
-  let s:config_file = expand('~/.local/share/shelltheme')
-
-  if filereadable(s:config_file)
-    let s:config = readfile(s:config_file, '', 2)
-
-    if s:config[1] =~# '^dark\|light$'
-      execute 'set background=' . s:config[1]
-    else
-      echoerr 'Bad background ' . s:config[1] . ' in ' . s:config_file
-    endif
-
-     if filereadable(expand('~/.cache/nvim/dein/repos/github.com/chriskempson/base16-vim/colors/base16-' . s:config[0] . '.vim'))
-      execute 'colorscheme base16-' . s:config[0]
-    else
-      echoerr 'Bad scheme ' . s:config[0] . ' in ' . s:config_file
-    endif
-  else " default
-    set background=dark
-    colorscheme base16-tomorrow
-  endif
-
+" Old setup
+" let s:config_file = expand('~/.local/share/shelltheme')
+" if filereadable(s:config_file)
+"   let s:config = readfile(s:config_file, '', 2)
+"
+"   if s:config[1] =~# '^dark\|light$'
+"     execute 'set background=' . s:config[1]
+"   else
+"     echoerr 'Bad background ' . s:config[1] . ' in ' . s:config_file
+"   endif
+"
+"    if filereadable(expand('~/.cache/nvim/dein/repos/github.com/chriskempson/base16-vim/colors/base16-' . s:config[0] . '.vim'))
+"     execute 'colorscheme base16-' . s:config[0]
+"   else
+"     echoerr 'Bad scheme ' . s:config[0] . ' in ' . s:config_file
+"   endif
+" else " default
+"   set background=dark
+"   colorscheme base16-tomorrow
+" endif
+" New setup
+source $VIM_PATH/bin/scheme
   if s:PincActive()
     execute 'highlight Comment ' . pinnacle#italicize('Comment')
   execute 'highlight link EndOfBuffer ColorColumn'
@@ -88,7 +88,7 @@ function s:CheckColorScheme()
 
   " Allow for overrides:
   hi Normal guibg=NONE ctermbg=NONE
-  highlight LineNr ctermfg=NONE ctermbg=NONE
+  " highlight LineNr ctermfg=NONE ctermbg=NONE
   highlight clear LineNr
   highlight clear SignColumn
   highlight SignifySignAdd guibg=NONE
@@ -100,14 +100,14 @@ function s:CheckColorScheme()
 endfunction
 
 call s:CheckColorScheme()
-
-if v:progname !=# 'vi'
-  if has('autocmd')
-    augroup Autocolor
-      autocmd!
-      autocmd FocusGained * call s:CheckColorScheme()
-    augroup END
-  endif
-
-  call s:CheckColorScheme()
-endif
+" Not needed and cuasing issue when switching out/in
+" if v:progname !=# 'vi'
+"   if has('autocmd')
+"     augroup Autocolor
+"       autocmd!
+"       autocmd FocusGained * call s:CheckColorScheme()
+"     augroup END
+"   endif
+" 
+"   call s:CheckColorScheme()
+" endif
