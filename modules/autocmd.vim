@@ -49,10 +49,20 @@ autocmd BufWritePost $VIM_PATH/modules/{*.vim,*.yaml,vimrc} nested
   autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
   " autocmd BufWritePost *config.h !superc % 
   " Needs a password to be passed
-  autocmd BufWritePost files,dirs !syncalias
+  autocmd BufWritePost files,dirs !syncal
 
   " Automatically open & close quickfix window
   autocmd QuickFixCmdPost [^l] * nested cwindow
+  
+  " Equalize window dimensions when resizing vim window
+  autocmd VimResized * wincmd = 
+
+  " Filetype specfic
+  autocmd Filetype cpp nmap gc I// <esc>
+  autocmd Filetype cpp nmap gd 0xxx
+
+" Update binds when sxhkdrc is updated.
+	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 
 augroup END
 
