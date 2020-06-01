@@ -34,6 +34,7 @@
         endif
         nnoremap <leader>f <cmd>CtrlP<cr>
         nnoremap <leader>b <cmd>CtrlPBuffer<cr>
+        nnoremap <leader><esc> <cmd>CtrlPBuffer<cr>
 
 # Ag extention for Crtl-p (Need to be compaired
 #

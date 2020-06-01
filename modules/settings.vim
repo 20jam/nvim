@@ -114,7 +114,7 @@ set ttyfast    " Improves smoothness of redrawing
 " endif
 
 " highlight current line
-set cursorline
+" set cursorline
 
 " suppress ~ at EndOfBuffer
 set fillchars+=eob:\

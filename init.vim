@@ -59,7 +59,6 @@ call utils#source_file($VIM_PATH,'modules/mappings.vim')
 call utils#source_file($VIM_PATH,'modules/theme.vim')
 call utils#source_file($VIM_PATH,'modules/settings.vim')
 call utils#source_file($VIM_PATH,'modules/autocmd.vim')
-call utils#source_file($VIM_PATH,'modules/apis.vim')
 call utils#source_file($VIM_PATH,'modules/commands.vim')
 
 set secure
