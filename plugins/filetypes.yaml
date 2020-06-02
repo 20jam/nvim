@@ -1,3 +1,4 @@
+# Populer languages {{{
 # Web develop support
 - { repo: hail2u/vim-css3-syntax, on_ft: css }
 - { repo: othree/csscomplete.vim, on_ft: css }
@@ -53,8 +54,8 @@
 
 # C support
 - { repo: arakashic/chromatica.nvim, on_ft: [ c,cpp ]}
-
-# Markdown
+# }}}
+# Markdown {{{
 
 - repo: plasticboy/vim-markdown
   on_ft: markdown
@@ -96,6 +97,8 @@
   hook_source: |
       let g:mkdp_auto_start = 0
 
+# }}}
 ### Other
 
 - { repo: MTDL9/vim-log-highlighting, on_ft: log }
+- { repo: kovetskiy/sxhkd-vim, on_ft: sxhkd }

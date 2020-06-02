@@ -1,214 +1,192 @@
-" TODO: Find a better way to organize mappings, maybe on usecase bases (e.g.
-" editing text, jumping around
-"
-" LocalLeader {{{
+nm ; <leader>
+xm ; <leader>
 
-" Dublicate lines
-nn <localleader>d m`YP``
-vn <localleader>d YPgv
+" Command Mode {{{
 
-" Source line, or vimrc
-nn <silent><localleader>la :update<CR>:so $MYVIMRC<CR>
-nn <localleader>ll ^vg_y:execute @@<CR>:echo 'Sourced line.'<CR>
-vn <localleader>l y:execute @@<CR>:echo 'Sourced selection.'<CR>
+" //////////////////////////////////////////////////
+cno jk <esc>
+cno <C-a> <Home>
+cno <C-b> <Left>
+cno <C-d> <Del>
+cno <C-e> <End>
+cno <C-f> <Right>
+cno <C-h> <BS>
+cno <C-p> <Up>
+cno <C-t> <C-R>=expand("%:p:h") . "/" <CR>
+" //////////////////////////////////////////////////
 
-" Expand edit or lcd
-nn <localleader>c :lcd <C-R>=expand('%:p:h') . '/'<CR>
-nn <localleader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
-
-" Replace Text
-nn <localleader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
-nn <localleader>w <cmd>write<cr>
-
-
-" }}}----------------------------------------------------------------
-"
-" Leader {{{
-" just being lazy
-nn <leader><leader> V
-xn <leader><leader> <esc>
-nn ' :
-nn <leader>a A
-nn <leader>i I
-
-nn <leader>w <cmd>write<cr>
-nn <leader>q q
-nn q <cmd>quit<cr>
-"nn <leader>d <cmd>bd<cr>
-nn <leader>n <Cmd>ToggleNumber<CR>
-
-" insted of arrows I guess
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-" noremap <leader>, <PageDown>
-" noremap <leader>. <PageUp>
-" g
-" Git mappings
-" nn <silent> <Leader>ga :Git add %:p<CR>
-" nn <silent> <Leader>gb :Git blame<CR>
-" nn <silent> <Leader>gc :Git commit<CR>
-" nn <silent> <Leader>gf :Gfetch<CR>
-" nn <silent> <Leader>gg :Magit<CR>
-" nn <silent> <Leader>gp :Gpush<CR>
-" nn <silent> <Leader>gs :Git<CR>
-" nn <silent> <Leader>gz :<C-u>FloatermNew height=0.7 width=0.8 lazygit<CR>
-"
-"
-" Dein Plugin {{{
-nnoremap <silent> <Leader>pu  :call dein#update()<CR>
-nnoremap <silent> <Leader>pr  :call dein#recache_runtimepath()<CR>
-nnoremap <silent> <Leader>pl  :echo dein#get_updates_log()<CR>
 " }}}
+" Insert Mode {{{
+" //////////////////////////////////////////////////
+iab xdate <C-r>=strftime("%H:%M %m/%d/20%y")<cr>
+ino <C-O> <Esc>o
+ino <C-a> <ESC>^i
+ino <C-b> <Left>
+ino <C-d> <Del>
+ino <C-f> <Right>
+ino <C-h> <BS>
+ino <C-k>  <ESC>d$a
+ino <C-u> <C-G>u<C-U>
+ino <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
+ino jj <esc>
+ino jk <esc>
+" //////////////////////////////////////////////////
+
 " }}}
-"
-" S Leader {{{
-
-" window-control prefix
-nn  [win]   <nop>
-nm      s [win]
-
-" Buffers Navigation
-nn <leader>j <cmd>bn<cr>
-nn <leader>k <cmd>bp<cr>
-" nn [win]] <cmd>bn<cr>
-" nn [win][ <cmd>bp<cr>
-nn [win]<leader> <cmd>b#<cr>
-" Buffer commands
-nn <leader>c <cmd>bd<cr>
-" Splits Navigation
-" nn <C-l> <C-w><c-k>
-" nn <C-h> <C-w><c-j>
-" nn <C-j> <C-w><C-h>
-" nn <C-k> <C-w><C-l>
-" nn <C-w> <C-w><C-w>
-" nn [win]s <cmd>wincmd w<cr>
-" nn [win]j <cmd>wincmd h<cr>
-" nn [win]k <cmd>wincmd l<cr>
-" nn [win]h <cmd>wincmd j<cr>
-" nn [win]n <cmd>wincmd j<cr>
-" knn [win]n <cmd>DWM_New<cr>
-" nn [win]l <cmd>wincmd k<cr>
-
-" Splits commands
-" nn [win]v <cmd>vs<cr>
-" nn [win]f <cmd>sp<cr>
-nn [win]o <cmd>only<cr>
-" nn [win]d <cmd>quit<cr>
-" Tabs Navigation
-no [win]g <cmd>tabprevious<CR>
-no [win]; <cmd>tabnext<CR>
-" Tabs Commands
-no [win]n <cmd>tabnew<CR>
-" Custom
-no [win]q <cmd>:wqa<CR>
-" }}}
-"
-" Normal Mode {{{
-"
-" A
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
-
-" All
-nn L $
-nn Y y$
-nn H 0
-nn - $
-nn ;; :
-nn ! :!
-nn U <C-r>
-" Don't work
-nn <X2Mouse> p
-" If we ever want to use file explore split
-" nn <C-e> :!start explorer %:p:h:gs?\/?\\\\\\?<CR>
-" nn <C-n> 
-" nn <C-p> 
-nn <C-a> <esc>ggVG<CR>
-" Manually remove highlight
-nn <silent> <C-h> :noh<CR>
-
-" g
-nn gq gwap
-" nm go :call modules#mappings#OpenLinkUnderCursor()<cr>
-nn g! :<C-u>put=execute('')<Left><Left>
-
-
-" q: Making quiting with q 
-nn <silent><buffer> q :quit<CR>
-" z
-" Folds
-nn zm zM 
-nn <localleader>z zMzvzz
-nn <tab> za
-" Center Screnn
-nn <expr> zz (winline() == (winheight(0)+1) / 2) ? 'zt' : (winline() == 1) ? 'zb' : 'zz'
-
-" Location List
-
-nm ]l :lnext<CR>
-nm [l :lprev<CR>
-nm ]q :cnext<CR>
-nm [q :cprev<CR>
-
-" }}}----------------------------------------------------------------
-"
 " Visual Mode {{{
 
-" Moving lines
-xn <silent>N <gv
-xn <silent>H <gv
-xn <silent>L >gv
-vn <silent>K :m-2<CR>gv=gv
+" //////////////////////////////////////////////////
+vn <leader>d YPgv
+vn <leader>l y:execute @@<CR>:echo 'Sourced selection.'<CR>
 vn <silent>J :m'>+<CR>gv=gv
-xnoremap <Tab> >gv|
-xnoremap <S-Tab> <gv
+vn <silent>K :m-2<CR>gv=gv
+xn <C-r> :<C-u>call modules#mappings#GetSelection('/')<CR>:%s/\V<C-R>=@/<CR>//gc<Left><Left><Left>
+xn <S-Tab> <gv
+xn <Tab> >gv|
+xn <leader>v <esc>
+xn <silent>H 0
+xn <silent>L $
+" //////////////////////////////////////////////////
 
-" replace contuniously
+" }}}
+" Normal Mode
+" G Key {{{
+
+" //////
+nn g! :<C-u>put=execute('')<Left><Left>
+nn <silent>gq gwap
+nn <silent>gs <cmd>Dirvish<cr>
+nn <silent>- <cmd>Dirvish<cr>
+nn <silent>ge G
+" //////
+
+" }}}
+" S Key {{{
+
+" //////
+"nn ss <cmd>b#<cr>
+nn <leader>s <cmd>b#<cr>
+nn ss <cmd>b#<cr>
+nn sc <cmd>WintabsClose<cr>
+nn s<esc> <cmd>WintabsClose<cr>
+nn sk <cmd>bn<cr>
+nn sj <cmd>bp<cr>
+
+nn sd <cmd>q<cr>
+nn so <cmd>only<cr>
+nn sv <cmd>vs<cr>
+nn sf <cmd>sp<cr>
+
+nn <leader>k <cmd>tabnext<cr>
+nn <leader>j <cmd>tabprevious<cr>
+nn sp <cmd>WintabsCloseVimtab<>
+nn sn <cmd>tabnew<CR>
+nn s; <cmd>tabnext<CR>
+nn sg <cmd>tabprevious<CR>
+
+" //////
+
+" }}}
+" Prefix {{{
+
+" //////
+nn <silent><C-h> :noh<CR>
+nn <silent><tab> za
+nn <silent><C-j> <cmd>wincmd w<cr>
+nn <silent><C-k> <cmd>wincmd W<cr>
+nn <silent><C-n> <cmd>cn<cr>
+nn <silent><C-p> <cmd>cp<cr>
+" //////
+
+" }}}
+" Leader {{{
+
+" //////
+" Lazy-shift 
+nn <leader>i I
+nn <leader>v V
+nn <leader>a A
+nn <leader>8 *
+xn <leader>8 *
+
+nn <leader>c :lcd <C-R>=expand('%:p:h') . '/'<CR>
+nn <leader>d m`YP``
+nn <leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
+nn <leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
+nn <leader>w <cmd>write<cr>
+nn <leader><Tab> zMzvzz
+nn zm zM 
+nn <leader>; :
+nn <leader><leader> :
+nn <silent><Leader>pl  :echo dein#get_updates_log()<CR>
+nn <silent><Leader>pr  :call dein#recache_runtimepath()<CR>
+nn <silent><Leader>pu  :call dein#update()<CR>
+nn <silent><leader>la :update<CR>:so $MYVIMRC<CR>
+nn <silent><leader>ll ^vg_y:execute @@<CR>:echo 'Sourced line.'<CR>
+nn <silent><leader>pt<cmd>1,$s/\t/  /g<cr>
+nn <silent><leader>tn <Cmd>ToggleNumber<CR>
+nn <silent><leader>tt :TodoistInit<CR>
+
+" nn <leader>j <cmd>wincmd w<cr>
+" nn <leader>k <cmd>wincmd W<cr>
+" //////
+
+" }}}
+" Letters {{{
+
+" nn \ :Ag<space>
+" nn <BS> %
+nn <expr> zz (winline() == (winheight(0)+1) / 2) ? 'zt' : (winline() == 1) ? 'zb' : 'zz'
+nn [l :lprev<CR>
+nn [q :cprev<CR>
+nn ]l :lnext<CR>
+nn ]q :cnext<CR>
 nn cN *``cgN
 nn cn *``cgn
+"nn bd <cmd>bd<CR>
+nn ! :!
+"nn ' :
+"nn ;; :
+nn H 0
+nn L $
+nn U <C-r>
+nn Y y$
+" }}}
+" Plugins {{{
+if dein#tap('accelerated-jk')
+  nm <silent>j <Plug>(accelerated_jk_gj)
+  nm <silent>k <Plug>(accelerated_jk_gk)
+endif
+if dein#tap('vim-asterisk')
+  map *   <Plug>(asterisk-g*)
+  map g*  <Plug>(asterisk-*)
+  map #   <Plug>(asterisk-g#)
+  map g#  <Plug>(asterisk-#)
 
-" Replace word under cursor
-xn <C-r> :<C-u>call modules#mappings#GetSelection('/')<CR>:%s/\V<C-R>=@/<CR>//gc<Left><Left><Left>
+  map z*  <Plug>(asterisk-z*)
+  map gz* <Plug>(asterisk-gz*)
+  map z#  <Plug>(asterisk-z#)
+  map gz# <Plug>(asterisk-gz#)
+endif
+if dein#tap('vim-smoothie')
+  nnoremap <silent> <C-f> :<C-U>call smoothie#forwards()<CR>
+  nnoremap <silent> <C-b> :<C-U>call smoothie#backwards()<CR>
+  nnoremap <silent> <C-d> :<C-U>call smoothie#downwards()<CR>
+  nnoremap <silent> <C-u> :<C-U>call smoothie#upwards()<CR>
+endif
+if dein#tap('vim-easymotion')
+  nmap sg <Plug>(easymotion-overwin-f)
+  nmap gjj <Plug>(easymotion-w)
+  nmap gkk <Plug>(easymotion-b)
+endif
 
-" }}}----------------------------------------------------------------
-"
-" Insert mode {{{
+  nnoremap <silent> mg :Magit<CR>
+  autocmd FileType magit nmap <buffer><silent> mg :quit<CR>
 
-cno jk <esc>
-ino jk <esc>
-ino jj <esc>
-ino <S-Return> <C-o>o
-" Doesn't work
-" nmap <delete> %
-" xmap <delete> %
-" nmap <BS> %
-" xmap <BS> %
+if dein#tap('vim-floaterm')
+  nn \\ <cmd>FloatermToggle<CR>
+  tno jk <C-\><C-n>:FloatermToggle<CR>
+endif
 
-" Get date in insert mode
-iab xdate <C-r>=strftime("%H:%M %m/%d/20%y")<cr>
-
-" Using Control in insertmode
-inoremap <C-O> <Esc>o
-inoremap <C-a> <ESC>^i
-inoremap <C-b> <Left>
-inoremap <C-d> <Del>
-inoremap <C-f> <Right>
-inoremap <C-h> <BS>
-inoremap <C-k>  <ESC>d$a
-inoremap <C-u> <C-G>u<C-U>
-" inoremap <C-w> <C-[>diwa
-inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
-
-" }}}----------------------------------------------------------------
-" 
-" Command mode {{{
-cnoremap <C-a> <Home>
-cnoremap <C-b> <Left>
-cnoremap <C-d> <Del>
-cnoremap <C-e> <End>
-cnoremap <C-f> <Right>
-cnoremap <C-h> <BS>
-cnoremap <C-p> <Up>
-cnoremap <C-t> <C-R>=expand("%:p:h") . "/" <CR>
+" //////
 " }}}

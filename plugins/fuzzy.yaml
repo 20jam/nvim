@@ -68,3 +68,16 @@
       let g:openbrowser_default_search = 'duckduckgo'
 
 # -----------------------------------------------------------------------------
+# Ctrlsf
+
+- repo: dyng/ctrlsf.vim
+  hook_source: |
+    nmap     \f <Plug>CtrlSFPrompt
+    vmap     \f <Plug>CtrlSFVwordPath
+    vmap     \F <Plug>CtrlSFVwordExec
+    nmap     \n <Plug>CtrlSFCwordPath
+    nmap     \p <Plug>CtrlSFPwordPath
+    nnoremap \o :CtrlSFOpen<CR>
+    nnoremap \t :CtrlSFToggle<CR>
+    inoremap \t <Esc>:CtrlSFToggle<CR>
+

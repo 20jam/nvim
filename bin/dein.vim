@@ -30,6 +30,8 @@ let s:config_paths = get(g:, 'etc_config_paths', [
   \ $VIM_PATH . '/plugins/interface.yaml',
   \ $VIM_PATH . '/plugins/filetypes.yaml',
   \ $VIM_PATH . '/plugins/fuzzy.yaml',
+  \ $VIM_PATH . '/plugins/editing.yaml',
+  \ $VIM_PATH . '/plugins/utils.yaml',
   \ $VIM_PATH . '/plugins/other.yaml',
   \ ])
 

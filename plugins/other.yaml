@@ -1,37 +1,16 @@
 - repo: Shougo/dein.vim
   on_func: dein#
 
+# TODO: Fix issue of color loading and unloading
 - repo: chrisbra/Colorizer
   hook_add: let g:colorizer_auto_filetype='css,html,cpp,config,conf,js,bash,shell,'
 
-- repo: justinmk/vim-dirvish
-  hook_add: source $VIM_PATH/modules/dirvish.vim
+# Database tool for interacting with databases
+- repo: tpope/vim-dadbod
 
-# Show a diff in sign column
-- repo: mhinz/vim-signify
-  hook_add: |
-    let g:signify_vcs_list = [ 'git' ]
-    let g:signify_sign_show_count = 0
-    let g:signify_disable_by_default = 1
-    let g:signify_sign_show_text = 1
-    let g:signify_sign_add               = '+'
-    let g:signify_sign_delete            = '*'
-    let g:signify_sign_delete_first_line = '*'
-    let g:signify_sign_change            = '!'
-    nmap gdj <plug>(signify-next-hunk)
-    nmap gdk <plug>(signify-prev-hunk)
-    nnoremap gde :SignifyDiff<cr>
-    nnoremap gds :SignifyToggle<cr>
-    nnoremap gdu :SignifyHunkUndo<cr>
-    omap ic <plug>(signify-motion-inner-pending)
-    xmap ic <plug>(signify-motion-inner-visual)
-    omap ac <plug>(signify-motion-outer-pending)
-    xmap ac <plug>(signify-motion-outer-visual)
+# UI for dadbod
+- repo: kristijanhusak/vim-dadbod-ui
+  on_cmd: [ DBUIToggle,DBUIAddConnection,DBUI,DBUIFindBuffer,DBUIRenameBuffer ]
+  on_source: vim-dadbod
+  hook_source: source $VIM_PATH/modules/dadbod-ui.vim
 
-- repo: zefei/vim-wintabs
-
-# Make editing sxhkd better
-- repo: kovetskiy/sxhkd-vim
-
-# Man in vim
-- repo: jez/vim-superman
