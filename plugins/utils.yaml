@@ -10,15 +10,23 @@
 - repo: justinmk/vim-dirvish
   hook_add: source $VIM_PATH/modules/dirvish.vim
 
+# Open under cursor
+
+- repo: tyru/open-browser.vim
+  hook_source: |
+      nmap go <Plug>(openbrowser-smart-search)
+      vmap go <Plug>(openbrowser-smart-search)
+      let g:openbrowser_browser_commands = [
+        \ {"name": "firefox",
+        \  "args": ["{browser}", "{uri}"]},
+      \]
+      let g:openbrowser_default_search = 'duckduckgo'
 
 # Terminal integration -------------------------------------
 
 - repo: voldikss/vim-floaterm
   on_cmd: [ FloatermNew,FloatermToggle,FloatermPrev,FloatermNext,FloatermSend ]
   hook_source: source  $VIM_PATH/modules/floaterm.vim
-
-
-# - repo: kassio/neoterm
 
 # Git ------------------------------------------------------
 
@@ -43,10 +51,30 @@
     let g:signify_sign_delete_first_line = '*'
     let g:signify_sign_change            = '!'
 
+# TODO: Fix unfolading after staging a file
 - repo: jreybert/vimagit
   on_cmd: Magit
 
 - { repo: hotwatermorning/auto-git-diff, on_ft: gitrebase }
+
+- repo: tpope/vim-fugitive
+
+# Use git directly from vim. It adds the :Git command or :G for short that
+# runs git status and shows the result in a split window. You can then use the
+# s keyboard shortcut to stage (git add) a file, u to unstage (git reset) a
+# file. After you stage the files, you can press cc to create a commit. I
+# don't know how to do a git push yet so that's something I still have to
+# learn. It would be pretty handy if I could git push code and deploy without
+# leaving vim, too.
+
+# Enhanced diff mode
+- repo: chrisbra/vim-diff-enhanced 
+  hook_add: |
+    if &diff
+      let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
+    endif
+
+# Other ---------------------------------------------------------
 
 # Show git messages (git balme)
 # https://github.com/APZelos/blamer.nvim

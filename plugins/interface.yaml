@@ -13,10 +13,11 @@
 
 # Kill buffer but not split 
 
-- repo: qpkorr/vim-bufkill
+# - repo: qpkorr/vim-bufkill
+#   on_map: { nv: <Plug> }
 
 # Accelerate jk
-- { repo: rhysd/accelerated-jk, on_map: { n: <Plug> } }
+# - { repo: rhysd/accelerated-jk, on_map: { n: <Plug> } }
 
 # Enhance asterisk use
 - repo: haya14busa/vim-asterisk
@@ -24,7 +25,7 @@
   hook_source: |
     let g:asterisk#keeppos = 1
 
-# Enhance scrolling
+# Enhance scrolling <C-f><C-b>
 - repo: psliwka/vim-smoothie
   on_func: smoothie#
   hook_add: |

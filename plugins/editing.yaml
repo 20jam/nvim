@@ -57,6 +57,9 @@
 # Autopair
 - repo: Raimondi/delimitMate
 
+# Align columns of text NOTE: Doesn't work
+- repo: junegunn/vim-easy-align
+
 # Clever f Maybe confliceting with expand region
 # NOTE: Disabled b/c cursor jump to command line
 # - repo: rhysd/clever-f.vim

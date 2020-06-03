@@ -69,8 +69,8 @@ nn <leader>s <cmd>b#<cr>
 nn ss <cmd>b#<cr>
 " nn sc <cmd>WintabsClose<cr>
 " nn s<esc> <cmd>WintabsClose<cr>
-nn sk <cmd>bn<cr>
-nn sj <cmd>bp<cr>
+" nn sk <cmd>bn<cr>
+" nn sj <cmd>bp<cr>
 
 nn sd <cmd>q<cr>
 nn so <cmd>only<cr>
@@ -182,10 +182,11 @@ endif
 
 nnoremap <silent> mg :Magit<CR>
 autocmd FileType magit nmap <buffer><silent> mg :quit<CR>
+autocmd FileType magit set nonu nornu
 
 if dein#tap('vim-floaterm')
   nn \\ <cmd>FloatermToggle<CR>
-  tno jk <C-\><C-n>:FloatermToggle<CR>
+  tno \\ <C-\><C-n>:FloatermToggle<CR>
 endif
 
 if dein#tap('caw.vim')
@@ -200,10 +201,10 @@ if dein#tap('caw.vim')
 			silent! nunmap <buffer> gcc
 			silent! xunmap <buffer> gcc
 		else
-			xmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
-			nmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
-			xmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
-			nmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
+			" xmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
+			" nmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
+			" xmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
+			" nmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
 			nmap <buffer> gc <Plug>(caw:prefix)
 			xmap <buffer> gc <Plug>(caw:prefix)
 			nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
@@ -227,6 +228,7 @@ if dein#tap('vim-expand-region')
   xmap <silent> V <Plug>(expand_region_shrink)
 endif
 if dein#tap('dsf.vim')
+  " deleting srrounding functions and leave its content.
   nmap dsf <Plug>DsfDelete
   nmap csf <Plug>DsfChange
 endif
@@ -257,5 +259,26 @@ if dein#tap('vim-bufkill')
   nn <silent>s<esc> <cmd>BD<cr>
   nn <silent>sc <cmd>BD<cr>
 endif
+if dein#tap('vim-wintabs')
+  nn <silent>sk <cmd>WintabsNext<cr>
+  nn <silent>sj <cmd>WintabsPrevious<cr>
+  nn <silent>sc <cmd>WintabsClose <cr>
+endif
+if dein#tap('ctrlp.vim')
+  nn <leader>f <cmd>CtrlP<cr>
+  " nn <leader>b <cmd>CtrlPBuffer<cr>
+  nn <leader><esc> <cmd>CtrlPBuffer<cr>
+endif
+if dein#tap('vim-easy-align')
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+endif
 " //////
+
+" Lasy =
+" last noma =
+" RAmss =
+
 " }}}

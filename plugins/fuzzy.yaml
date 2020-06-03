@@ -1,13 +1,4 @@
-# Crtl-p
-
-# f5 to recach
-# c-f and c-b to switch between modes
-# c-d to switch to file name insted of paths
-# c-p and c-b to select pervious history input
-# c-j and c-k to navigate the list
-# c-y to create a new file in current directory
-# type .. to go up a level
-
+# Fuzzy file files and buffers 
 - repo: ctrlpvim/ctrlp.vim
   hook_source: |
         let g:ctrlp_status_func = {'':''}
@@ -32,44 +23,9 @@
           let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
           let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
         endif
-        nnoremap <leader>f <cmd>CtrlP<cr>
-        nnoremap <leader>b <cmd>CtrlPBuffer<cr>
-        nnoremap <leader><esc> <cmd>CtrlPBuffer<cr>
-
-# Ag extention for Crtl-p (Need to be compaired
-#
-# ag options
-# -U : Ignore VCS ignore files (.gitignore) but still use .ignore.
-# -l : Only print the names of files containing matches, not the matching lines.
-# -i : ignore cases
-# -g : print filenames matching PATTERN
-# --[no]group : group or not to group matches in the same file togther.
-
-- repo: lokikl/vim-ctrlp-ag
-  hook_source: |
-    nnoremap <c-f> :CtrlPag<cr>
-    vnoremap <c-f> :CtrlPagVisual<cr>
-    vnoremap <c-f> :CtrlPagVisual<cr>
-    let g:ctrlp_ag_ignores = '--ignore .git
-        \ --ignore "deps/*"
-        \ --ignore "_build/*"
-        \ --ignore "node_modules/*"'
-
-# Open under cursor
-
-- repo: tyru/open-browser.vim
-  hook_source: |
-      nmap go <Plug>(openbrowser-smart-search)
-      vmap go <Plug>(openbrowser-smart-search)
-      let g:openbrowser_browser_commands = [
-        \ {"name": "firefox",
-        \  "args": ["{browser}", "{uri}"]},
-      \]
-      let g:openbrowser_default_search = 'duckduckgo'
-
 # -----------------------------------------------------------------------------
-# Ctrlsf
 
+# Search text
 - repo: dyng/ctrlsf.vim
   hook_source: |
     nmap     \f <Plug>CtrlSFPrompt
@@ -81,7 +37,21 @@
     nnoremap \t :CtrlSFToggle<CR>
     inoremap \t <Esc>:CtrlSFToggle<CR>
 
+# Replace in all files
 - { repo: brooth/far.vim, on_cmd: [ Far, Farp, F ] }
+
+# Far makes it easy to find and replace text in multiple files. It adds the
+# :Far pattern1 pattern2 command. When you run this command, it splits the
+# screen in two halves. In the upper half it shows all files and lines that
+# pattern1 matches. In the lower half, it previews the match context. In the
+# upper split, you can use hjkl keys to navigate matches. By default, all
+# matches will be replaced with pattern2 but you can also use the t key to
+# unmark the matches (and use t again to mark them). After you have selected
+# all matches that you want to replace, run the :Fardo command. This command
+# will perform the actual replacement.
+# Far also is great for grepping all matches. You can use :F pattern command
+# and it will find all pattern matches and display them in two splits, but it
+# won't do the replacement.
 
 - repo: liuchengxu/vista.vim
   on_cmd: Vista

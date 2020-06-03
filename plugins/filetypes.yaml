@@ -98,6 +98,7 @@
       let g:mkdp_auto_start = 0
 
 # }}}
+
 ### Other
 
 - { repo: MTDL9/vim-log-highlighting, on_ft: log }
