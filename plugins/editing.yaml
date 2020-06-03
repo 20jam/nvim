@@ -58,7 +58,8 @@
 - repo: Raimondi/delimitMate
 
 # Clever f Maybe confliceting with expand region
-- repo: rhysd/clever-f.vim
-  hook_add: |
-    let g:clever_f_smart_case = 1
-    let g:clever_f_hide_cursor_on_cmdline = 1
+# NOTE: Disabled b/c cursor jump to command line
+# - repo: rhysd/clever-f.vim
+#   hook_add: |
+#     let g:clever_f_smart_case = 1
+#     let g:clever_f_hide_cursor_on_cmdline = 1
