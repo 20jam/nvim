@@ -58,6 +58,9 @@
 - { repo: hotwatermorning/auto-git-diff, on_ft: gitrebase }
 
 - repo: tpope/vim-fugitive
+  hook_add: |
+    autocmd FileType git nmap <buffer><silent> s 
+    
 
 # Use git directly from vim. It adds the :Git command or :G for short that
 # runs git status and shows the result in a split window. You can then use the
@@ -74,7 +77,8 @@
       let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
     endif
 
-# Other ---------------------------------------------------------
-
 # Show git messages (git balme)
 # https://github.com/APZelos/blamer.nvim
+
+# Other ---------------------------------------------------------
+
