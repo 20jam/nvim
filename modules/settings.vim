@@ -94,8 +94,8 @@ set showtabline=2       " Always show the tabs line
 set mouse=a
 
 " Disable Numbers 
-set nonu nornu
-
+" set nonu nornu
+set nu rnu
 " Don't Show current mode
 set noshowmode
 
