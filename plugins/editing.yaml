@@ -1,3 +1,4 @@
+# Have a way to navigate long text
 - repo: easymotion/vim-easymotion
   on_map: { n: <Plug> }
   hook_source: |
@@ -6,3 +7,60 @@
         let g:EasyMotion_keys = 'fjdkswbeoavn'
         let g:EasyMotion_smartcase = 1
         let g:EasyMotion_use_smartsign_us = 1
+
+# Commenting out lines
+- repo: Shougo/context_filetype.vim
+
+- repo: tyru/caw.vim
+  depends: context_filetype.vim
+  on_map: { nx: <Plug> }
+
+# Focus mode
+- repo: junegunn/goyo.vim
+  on_cmd: Goyo
+  hook_source: source  $VIM_PATH/modules/goyo.vim
+
+- repo: junegunn/Limelight.vim
+  on_cmd: Limelight
+
+# Better I/A
+- repo: kana/vim-niceblock
+  on_map: { x: <Plug> }
+  hook_add: let g:niceblock_no_default_key_mappings = 0
+
+# Better v/ expand and shrink region
+- { repo: terryma/vim-expand-region, on_map: { x: <Plug> }}
+  
+# Delete sroundings 
+- repo: AndrewRadev/dsf.vim
+  on_map: { n: <Plug>Dsf }
+  hook_add: let g:dsf_no_mappings = 1
+
+# Replace operator
+- repo: kana/vim-operator-replace
+  on_map: { vnx: <Plug> }
+
+# Srounding operators
+- repo: machakann/vim-sandwich
+  on_map: { vonx: <Plug>(operator-sandwich- }
+  hook_add: |
+    let g:sandwich_no_default_key_mappings = 1
+    let g:operator_sandwich_no_default_key_mappings = 1
+    let g:textobj_sandwich_no_default_key_mappings = 1
+
+# Text objects
+- { repo: wellle/targets.vim, merged: 0 }
+
+# Match parans
+- repo: itchyny/vim-parenmatch
+
+# Autopair
+- repo: Raimondi/delimitMate
+
+# Clever f
+- repo: rhysd/clever-f.vim
+  hook_add:
+    let g:clever_f_smart_case = 1
+    let g:clever_f_hide_cursor_on_cmdline = 1
+    let g:clever_f_repeat_last_char_inputs = ["\<CR>", "\<Tab>"]
+
