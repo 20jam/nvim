@@ -43,7 +43,7 @@ vn <silent>K :m-2<CR>gv=gv
 xn <C-r> :<C-u>call modules#mappings#GetSelection('/')<CR>:%s/\V<C-R>=@/<CR>//gc<Left><Left><Left>
 xn <S-Tab> <gv
 xn <Tab> >gv|
-xn <leader>v <esc>
+"xn <leader>v <esc>
 xn <silent>H 0
 xn <silent>L $
 " //////////////////////////////////////////////////
@@ -125,7 +125,7 @@ nn <silent><leader>la :update<CR>:so $MYVIMRC<CR>
 nn <silent><leader>ll ^vg_y:execute @@<CR>:echo 'Sourced line.'<CR>
 nn <silent><leader>pt<cmd>1,$s/\t/  /g<cr>
 nn <silent><leader>tn <Cmd>ToggleNumber<CR>
-nn <silent><leader>tt :TodoistInit<CR>
+" nn <silent><leader>tt :TodoistInit<CR>
 
 " nn <leader>j <cmd>wincmd w<cr>
 " nn <leader>k <cmd>wincmd W<cr>
@@ -180,13 +180,66 @@ if dein#tap('vim-easymotion')
   nmap gkk <Plug>(easymotion-b)
 endif
 
-  nnoremap <silent> mg :Magit<CR>
-  autocmd FileType magit nmap <buffer><silent> mg :quit<CR>
+nnoremap <silent> mg :Magit<CR>
+autocmd FileType magit nmap <buffer><silent> mg :quit<CR>
 
 if dein#tap('vim-floaterm')
   nn \\ <cmd>FloatermToggle<CR>
   tno jk <C-\><C-n>:FloatermToggle<CR>
 endif
 
+if dein#tap('caw.vim')
+  nmap <buffer> gc <Plug>(caw:prefix)
+  xmap <buffer> gc <Plug>(caw:prefix)
+  nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+  xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+endif
+if dein#tap('goyo.vim')
+  nmap <leader>g <cmd>Goyo<CR>
+endif
+if dein#tap('vim-niceblock')
+  silent! xmap I  <Plug>(niceblock-I)
+  silent! xmap gI <Plug>(niceblock-gI)
+  silent! xmap A  <Plug>(niceblock-A)
+endif
+if dein#tap('vim-expand-region')
+  xmap v <Plug>(expand_region_expand)
+  xmap V <Plug>(expand_region_shrink)
+endif
+if dein#tap('dsf.vim')
+  nmap dsf <Plug>DsfDelete
+  nmap csf <Plug>DsfChange
+endif
+if dein#tap('vim-operator-replace')
+  " xmap p <Plug>(operator-replace)
+  " TODO: fix
+endif
+if dein#tap('vim-sandwich')
+  nmap <silent> sa <Plug>(operator-sandwich-add)
+  xmap <silent> sa <Plug>(operator-sandwich-add)
+  omap <silent> sa <Plug>(operator-sandwich-g@)
+  nmap <silent> sx <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+  xmap <silent> sx <Plug>(operator-sandwich-delete)
+  nmap <silent> sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+  xmap <silent> sr <Plug>(operator-sandwich-replace)
+  nmap <silent> sxb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+  nmap <silent> srb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+  omap ib <Plug>(textobj-sandwich-auto-i)
+  xmap ib <Plug>(textobj-sandwich-auto-i)
+  omap ab <Plug>(textobj-sandwich-auto-a)
+  xmap ab <Plug>(textobj-sandwich-auto-a)
+  omap is <Plug>(textobj-sandwich-query-i)
+  xmap is <Plug>(textobj-sandwich-query-i)
+  omap as <Plug>(textobj-sandwich-query-a)
+  xmap as <Plug>(textobj-sandwich-query-a)
+endif
+if dein#tap('vim-bufkill')
+  nn <silent>s<esc> <cmd>BD<cr>
+  nn <silent>sc <cmd>BD<cr>
+  nn <silent>sk <cmd>BF<cr>
+  nn <silent>sj <cmd>BB<cr>
+  nn <silent>ss <cmd>BA<cr>
+  nn <silent>s<leader> <cmd>BA<cr>
+endif
 " //////
 " }}}
