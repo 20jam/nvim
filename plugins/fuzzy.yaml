@@ -81,3 +81,16 @@
     nnoremap \t :CtrlSFToggle<CR>
     inoremap \t <Esc>:CtrlSFToggle<CR>
 
+- { repo: brooth/far.vim, on_cmd: [ Far, Farp, F ] }
+
+- repo: liuchengxu/vista.vim
+  on_cmd: Vista
+  hook_add: |
+    let g:vista#renderer#enable_icon = 1
+    let g:vista_echo_cursor_strategy = 'scroll'
+    let g:vista_vimwiki_executive = 'markdown'
+    let g:vista_executive_for = {
+      \ 'vimwiki': 'markdown',
+      \ 'pandoc': 'markdown',
+      \ 'markdown': 'toc',
+      \ }

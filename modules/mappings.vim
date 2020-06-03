@@ -67,8 +67,8 @@ nn <silent>ge G
 "nn ss <cmd>b#<cr>
 nn <leader>s <cmd>b#<cr>
 nn ss <cmd>b#<cr>
-nn sc <cmd>WintabsClose<cr>
-nn s<esc> <cmd>WintabsClose<cr>
+" nn sc <cmd>WintabsClose<cr>
+" nn s<esc> <cmd>WintabsClose<cr>
 nn sk <cmd>bn<cr>
 nn sj <cmd>bp<cr>
 
@@ -175,9 +175,9 @@ if dein#tap('vim-smoothie')
   nnoremap <silent> <C-u> :<C-U>call smoothie#upwards()<CR>
 endif
 if dein#tap('vim-easymotion')
-  nmap sg <Plug>(easymotion-overwin-f)
-  nmap gjj <Plug>(easymotion-w)
-  nmap gkk <Plug>(easymotion-b)
+  "nmap sg <Plug>(easymotion-overwin-f)
+  nmap gj <Plug>(easymotion-w)
+  nmap gk <Plug>(easymotion-b)
 endif
 
 nnoremap <silent> mg :Magit<CR>
@@ -189,11 +189,31 @@ if dein#tap('vim-floaterm')
 endif
 
 if dein#tap('caw.vim')
-  nmap <buffer> gc <Plug>(caw:prefix)
-  xmap <buffer> gc <Plug>(caw:prefix)
-  nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
-  xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+	function! InitCaw() abort
+		if ! (&l:modifiable && &buftype ==# '')
+			" silent! nunmap <buffer> <Leader>V
+			" silent! xunmap <buffer> <Leader>V
+			" silent! nunmap <buffer> <Leader>v
+			" silent! xunmap <buffer> <Leader>v
+			silent! nunmap <buffer> gc
+			silent! xunmap <buffer> gc
+			silent! nunmap <buffer> gcc
+			silent! xunmap <buffer> gcc
+		else
+			xmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
+			nmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
+			xmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
+			nmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
+			nmap <buffer> gc <Plug>(caw:prefix)
+			xmap <buffer> gc <Plug>(caw:prefix)
+			nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+			xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+		endif
+	endfunction
+	autocmd user_events FileType * call InitCaw()
+	call InitCaw()
 endif
+
 if dein#tap('goyo.vim')
   nmap <leader>g <cmd>Goyo<CR>
 endif
@@ -203,8 +223,8 @@ if dein#tap('vim-niceblock')
   silent! xmap A  <Plug>(niceblock-A)
 endif
 if dein#tap('vim-expand-region')
-  xmap v <Plug>(expand_region_expand)
-  xmap V <Plug>(expand_region_shrink)
+  xmap <silent> v <Plug>(expand_region_expand)
+  xmap <silent> V <Plug>(expand_region_shrink)
 endif
 if dein#tap('dsf.vim')
   nmap dsf <Plug>DsfDelete
@@ -236,10 +256,6 @@ endif
 if dein#tap('vim-bufkill')
   nn <silent>s<esc> <cmd>BD<cr>
   nn <silent>sc <cmd>BD<cr>
-  nn <silent>sk <cmd>BF<cr>
-  nn <silent>sj <cmd>BB<cr>
-  nn <silent>ss <cmd>BA<cr>
-  nn <silent>s<leader> <cmd>BA<cr>
 endif
 " //////
 " }}}

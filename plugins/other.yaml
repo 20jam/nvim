@@ -13,4 +13,3 @@
   on_cmd: [ DBUIToggle,DBUIAddConnection,DBUI,DBUIFindBuffer,DBUIRenameBuffer ]
   on_source: vim-dadbod
   hook_source: source $VIM_PATH/modules/dadbod-ui.vim
-

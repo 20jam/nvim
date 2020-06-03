@@ -15,7 +15,7 @@
   depends: context_filetype.vim
   on_map: { nx: <Plug> }
 
-# Focus mode
+# Focus mode TODO: further testing and mapping
 - repo: junegunn/goyo.vim
   on_cmd: Goyo
   hook_source: source  $VIM_PATH/modules/goyo.vim
@@ -29,7 +29,7 @@
   hook_add: let g:niceblock_no_default_key_mappings = 0
 
 # Better v/ expand and shrink region
-- { repo: terryma/vim-expand-region, on_map: { x: <Plug> }}
+# - { repo: terryma/vim-expand-region, on_map: { x: <Plug> }}
   
 # Delete sroundings 
 - repo: AndrewRadev/dsf.vim
@@ -57,10 +57,8 @@
 # Autopair
 - repo: Raimondi/delimitMate
 
-# Clever f
+# Clever f Maybe confliceting with expand region
 - repo: rhysd/clever-f.vim
-  hook_add:
+  hook_add: |
     let g:clever_f_smart_case = 1
     let g:clever_f_hide_cursor_on_cmdline = 1
-    let g:clever_f_repeat_last_char_inputs = ["\<CR>", "\<Tab>"]
-

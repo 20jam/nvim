@@ -46,3 +46,7 @@
 - repo: jreybert/vimagit
   on_cmd: Magit
 
+- { repo: hotwatermorning/auto-git-diff, on_ft: gitrebase }
+
+# Show git messages (git balme)
+# https://github.com/APZelos/blamer.nvim

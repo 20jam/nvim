@@ -1,5 +1,6 @@
 # UI
-# - repo: chriskempson/base16-vim
+# Colorschemes
+- repo: chriskempson/base16-vim
 
 # Highlight
 - repo: wincent/pinnacle
@@ -10,6 +11,10 @@
 # Tabline
 - repo: zefei/vim-wintabs
 
+# Kill buffer but not split 
+
+- repo: qpkorr/vim-bufkill
+
 # Accelerate jk
 - { repo: rhysd/accelerated-jk, on_map: { n: <Plug> } }
 
@@ -19,8 +24,24 @@
   hook_source: |
     let g:asterisk#keeppos = 1
 
+# Enhance scrolling
 - repo: psliwka/vim-smoothie
   on_func: smoothie#
   hook_add: |
     let g:smoothie_no_default_mappings = v:true
 
+# Disable always highlighting search
+- repo: romainl/vim-cool
+
+# Underline current word
+# - repo: itchyny/vim-cursorword
+#   on_event: FileType
+#   hook_source: |
+#     augroup user_plugin_cursorword
+#       autocmd!
+#       autocmd FileType defx,denite,qf, let b:cursorword = 0
+#       autocmd WinEnter * if &diff | let b:cursorword = 0 | endif
+#       autocmd InsertEnter * let b:cursorword = 0
+#       autocmd InsertLeave * let b:cursorword = 1
+#     augroup END
+# 
