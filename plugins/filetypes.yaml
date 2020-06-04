@@ -80,6 +80,7 @@
       \ 'tsx=typescriptreact',
       \ 'docker=Dockerfile',
       \ 'makefile=make',
+      \ 'php=javascript',
       \ 'py=python'
       \ ]
 

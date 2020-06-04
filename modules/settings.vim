@@ -122,7 +122,7 @@ set fillchars+=eob:\
   if has('windows')
     set fillchars=diff:∙               " 
     set fillchars+=fold:·              " 
-    set fillchars+=vert:┃              " 
+    set fillchars+=vert:\|
   endif
 
 " Sync with corresponding nvim :highlight commands in /modules/autocmds.vim
