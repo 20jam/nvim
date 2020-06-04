@@ -60,6 +60,10 @@ autocmd BufWritePost $VIM_PATH/modules/{*.vim,*.yaml,vimrc} nested
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 
+" In terminal buffers disable numbers and status line inforamtion
+au TermOpen * setlocal listchars= nonumber norelativenumber statusline=
+au TermOpen * setlocal statusline=-
+
 augroup END
 
 " TODO: move to file type:
