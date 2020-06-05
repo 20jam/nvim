@@ -103,9 +103,10 @@ nn <silent><C-p> <cmd>cp<cr>
 
 " //////
 " Lazy-shift 
-nn <leader>i I
+" TODO: toggle off/on statusbar and tabline
+"nn <leader>i I
 nn <leader>v V
-nn <leader>a A
+"nn <leader>a A
 nn <leader>8 *
 xn <leader>8 *
 
