@@ -19,7 +19,7 @@ endif
 " show whitespace
 set list
 set listchars=nbsp:⦸
-set listchars+=tab:»»
+set listchars=tab:\ \
 " set listchars+=extends:»
 " set listchars+=precedes:«
 " set listchars+=trail:•

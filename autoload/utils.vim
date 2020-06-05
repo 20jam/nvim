@@ -52,7 +52,7 @@ function! utils#new_project()
       " setlocal noru nonu nornu
       " setlocal statusline +=%4*\ %<%F%*
       " setlocal statusline +=(%f)
-    elseif
+    else
       exe "edit" l:filename
       setlocal statusline =[
       " setlocal statusline +=XN:work]

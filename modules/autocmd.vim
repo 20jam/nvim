@@ -64,6 +64,8 @@ autocmd BufWritePost $VIM_PATH/modules/{*.vim,*.yaml,vimrc} nested
 au TermOpen * setlocal listchars= nonumber norelativenumber statusline=
 au TermOpen * setlocal statusline=-
 
+au Filetype markdown setlocal nonumber norelativenumber
+
 augroup END
 
 " TODO: move to file type:

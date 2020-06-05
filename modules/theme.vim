@@ -96,7 +96,7 @@ source $VIM_PATH/bin/scheme
   highlight SignifySignChange guibg=NONE
   highlight Folded gui=italic guibg=NONE
   highlight Comment gui=italic guibg=NONE
-  "
+  set signcolumn=yes
 endfunction
 
 call s:CheckColorScheme()
