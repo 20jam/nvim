@@ -23,7 +23,27 @@
           let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
           let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
         endif
-# -----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
+- repo: alok/notational-fzf-vim
+  hook_add: | 
+    let g:nv_search_paths = ['~/dmas/2020']
+    let g:nv_default_extension = '.md'
+    let g:nv_show_preview = 1
+    let g:nv_wrap_preview_text = 1
+    let g:nv_window_width = '50%'
+    let g:nv_use_short_pathnames = 1
+    let g:nv_preview_width = 60
+    nmap <Leader>z :NV<CR>
+
+- repo: junegunn/fzf
+  build: './install --all'
+  merged: 0
+
+- repo: junegunn/fzf.vim
+
+- repo: yuki-ycino/fzf-preview.vim
+
+# ----------------------------------------------------------------------------
 
 # Search text
 - repo: dyng/ctrlsf.vim
