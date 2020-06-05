@@ -32,13 +32,38 @@ function! utils#check_source(filename)
     endif
 endfunction
 
-" function! utils#generate_coc_json()
-"    let coc_settings_json=expand($VIM_PATH. '/coc-settings.json')
-"    let coc_json_template=expand($VIM_PATH. '/.example.json')
-"    if !filereadable(coc_settings_json)
-"        let contents = readfile(coc_json_template)
-"        call add(contents,join(getline(1,'$'),"\n"))
-"        call writefile(contents,coc_settings_json,"b")
-"    endif
-" endfunction
 
+function! utils#new_project()
+  let l:suffix= "/vid-preprod."
+  let l:templetedir = $HOME . "/.templetes"
+  let l:workdir = $HOME . "/dmas/2020/projects"
+  let l:ext = ".md"
+  let l:date = strftime('%b.%d') 
+  let l:filename = l:workdir . l:suffix . l:date . l:ext
+
+  if !filereadable(l:filename)
+      exe "edit" l:filename
+      exe "read" l:templetedir . "/pre-prod.templete.md"
+      setlocal statusline =[
+      setlocal statusline +=XN]
+      " setlocal statusline +=\ NewProject:
+      " setlocal statusline +=\ %t
+      " setlocal statusline +=\ [%M]
+      " setlocal noru nonu nornu
+      " setlocal statusline +=%4*\ %<%F%*
+      " setlocal statusline +=(%f)
+    elseif
+      exe "edit" l:filename
+      setlocal statusline =[
+      " setlocal statusline +=XN:work]
+      " setlocal statusline +=\ ProjectFilename:
+      " setlocal statusline +=\ %t
+      " setlocal statusline +=\ [%M]
+      " setlocal noru nonu nornu
+      " setlocal statusline +=%4*\ %<%F%*
+      " setlocal statusline +=(%f)
+  endif
+endfunction
+
+command! XN :call utils#new_project()
+" 
