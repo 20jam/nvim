@@ -57,6 +57,7 @@
 
 - { repo: hotwatermorning/auto-git-diff, on_ft: gitrebase }
 
+  # Git Integration:::::::::::::::::::::::::::::::::::::::::::::::::::::
 - repo: tpope/vim-fugitive
 
 # Use git directly from vim. It adds the :Git command or :G for short that
@@ -67,6 +68,7 @@
 # learn. It would be pretty handy if I could git push code and deploy without
 # leaving vim, too.
 
+  # Enhancements 
 # Enhanced diff mode
 - repo: chrisbra/vim-diff-enhanced 
   hook_add: |
@@ -79,3 +81,14 @@
 
 # Other ---------------------------------------------------------
 
+# Repel
+- repo: ChristianChiarulli/codi.vim
+  hook_add: |
+    highlight CodiVirtualText guifg=green
+    let g:codi#virtual_text_prefix = "❯ "
+    let g:codi#aliases = {
+                      \ 'javascript.jsx': 'javascript',
+                      \ }
+# Laravel Integration
+- repo: noahfrederick/vim-composer
+- repo: noahfrederick/vim-laravel
