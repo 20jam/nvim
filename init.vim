@@ -60,5 +60,7 @@ call utils#source_file($VIM_PATH,'modules/theme.vim')
 call utils#source_file($VIM_PATH,'modules/settings.vim')
 call utils#source_file($VIM_PATH,'modules/autocmd.vim')
 call utils#source_file($VIM_PATH,'modules/commands.vim')
+call utils#source_file($VIM_PATH,'modules/lsp.vim')
+call utils#source_file($VIM_PATH,'modules/completion.vim')
 
 set secure

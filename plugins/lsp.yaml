@@ -1,0 +1,4 @@
+- repo: neovim/nvim-lsp
+- repo: haorenW1025/completion-nvim
+
+# yarn global add bash-language-server
