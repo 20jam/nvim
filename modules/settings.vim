@@ -86,9 +86,11 @@ set scrolloff=2         " Keep at least 2 lines above/below
 set fcs=eob:\           " hide ~ tila
 
 " always show status line
-set laststatus=2
+"set laststatus=2
 
 set showtabline=2       " Always show the tabs line
+
+" set statusline=%<%f\ %h%m%r\ %y%=%{v:register}\ %-14.(%l,%c%V%)\ %P
 
 " Enable mouse clicks
 set mouse=a
