@@ -65,6 +65,8 @@ au TermOpen * setlocal listchars= nonumber norelativenumber statusline=
 au TermOpen * setlocal statusline=-
 
 au Filetype markdown setlocal nonumber norelativenumber
+au Filetype markdown nn <silent><buffer> gq gwap
+ 
 
 augroup END
 

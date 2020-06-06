@@ -18,7 +18,7 @@ cno <C-t> <C-R>=expand("%:p:h") . "/" <CR>
 " }}}
 " Insert Mode {{{
 " //////////////////////////////////////////////////
-iab xdate <C-r>=strftime("%H:%M %m/%d/20%y")<cr>
+iab xdate <C-r>=strftime("%m/%d/20%y")<cr>
 ino <C-O> <Esc>o
 ino <C-a> <ESC>^i
 ino <C-b> <Left>
@@ -54,8 +54,6 @@ xn <silent>L $
 
 " //////
 nn g! :<C-u>put=execute('')<Left><Left>
-nn <silent>gq gwap
-nn <silent>gs <cmd>Dirvish<cr>
 nn <silent>- <cmd>Dirvish<cr>
 nn <silent>ge G
 " //////
@@ -271,15 +269,23 @@ if dein#tap('ctrlp.vim')
   nn <leader><esc> <cmd>CtrlPBuffer<cr>
 endif
 if dein#tap('vim-easy-align')
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+  " Start interactive EasyAlign in visual mode (e.g. vipga)
+  xmap ga <Plug>(EasyAlign)
+  " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+  nmap ga <Plug>(EasyAlign)
+endif
+
+if dein#tap('vim-signify')
+  nmap gdj <plug>(signify-next-hunk)
+  nmap gdk <plug>(signify-prev-hunk)
+  nnoremap gde :SignifyDiff<cr>
+  nnoremap gds :SignifyToggle<cr>
+  " nnoremap gdu :SignifyHunkUndo<cr>
+  omap ic <plug>(signify-motion-inner-pending)
+  xmap ic <plug>(signify-motion-inner-visual)
+  omap ac <plug>(signify-motion-outer-pending)
+  xmap ac <plug>(signify-motion-outer-visual)
 endif
 " //////
-
-" Lasy =
-" last noma =
-" RAmss =
 
 " }}}
