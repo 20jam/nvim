@@ -1,5 +1,4 @@
 " Language Servers
-function ConfigureNativeLSP()
   call luaeval("require'nvim_lsp'.vimls.setup{}")
   call luaeval("require'nvim_lsp'.bashls.setup{}")
   call luaeval("require'nvim_lsp'.tsserver.setup{}")
@@ -10,7 +9,6 @@ function ConfigureNativeLSP()
   call luaeval("require'nvim_lsp'.intelephense.setup{}")
   call luaeval("require'nvim_lsp'.yamlls.setup{}")
   call luaeval("require'nvim_lsp'.vuels.setup{}")
-endfun
 " use omni completion provided by lsp
 set omnifunc=lsp#omnifunc
 
