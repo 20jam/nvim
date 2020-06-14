@@ -2,7 +2,7 @@ augroup GeneralAutocmd " {{{
   autocmd!
 
 " Reload vim config automatically
-autocmd BufWritePost $VIM_PATH/modules/{*.vim,*.yaml,vimrc} nested
+" autocmd BufWritePost $VIM_PATH/modules/{*.vim,*.yaml,vimrc} nested
     " \ source $MYVIMRC | redraw
 
 " Reload Vim script automatically if setlocal autoread
@@ -64,10 +64,12 @@ autocmd BufWritePost $VIM_PATH/modules/{*.vim,*.yaml,vimrc} nested
 au TermOpen * setlocal listchars= nonumber norelativenumber statusline=
 au TermOpen * setlocal statusline=-
 
+au BufLeave TODO silent write
+
 au Filetype markdown setlocal nonumber norelativenumber
 au Filetype markdown nn <silent><buffer> gq gwap
- 
-
+au Filetype fugitive nn <silent><buffer> sd :q<cr>
+autocmd BufReadPost fugitive://* set bufhidden=delete " Delete fugitive buffers
 augroup END
 
 " TODO: move to file type:

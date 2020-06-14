@@ -66,4 +66,12 @@ function! utils#new_project()
 endfunction
 
 command! XN :call utils#new_project()
-" 
+
+let s:middot='·'
+let s:raquo='»'
+let s:small_l='ℓ'
+function! utils#foldtext() abort
+  let l:first=substitute(getline(v:foldstart), '\v *', '', '')
+  return l:first
+endfunction
+

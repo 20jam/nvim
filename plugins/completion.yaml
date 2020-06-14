@@ -1,0 +1,37 @@
+# Coc
+- repo: neoclide/coc.nvim
+  merged: 0
+  build: 'yarn install --frozen-lockfile'
+# Completion by haorenW1025
+# - repo: haorenW1025/completion-nvim
+# - repo: kristijanhusak/vim-dadbod-completion
+# - repo: nvim-treesitter/completion-treesitter
+# - repo: steelsojka/completion-buffers
+
+# nvim-lsp
+# - repo: neovim/nvim-lsp
+# Snppets setup
+
+# - repo: honza/vim-snippets
+#   depends: coc.nvim
+#   on_event: FileType
+#   if: has('python3')
+#   merged: 0
+
+# - repo: SirVer/ultisnips
+#   if: has('python3')
+#   on_event: FileType
+
+# Completion by deoplete
+# - repo: Shougo/deoplete-lsp
+#   depends: deoplete.nvim
+# 
+# - repo: Shougo/deoplete.nvim
+#   depends: context_filetype.vim
+#   on_event: InsertEnter
+#   hook_add: let g:deoplete#enable_at_startup = 1
+
+# Other
+- repo: Shougo/echodoc.vim
+  hook_add: |
+      let g:echodoc#enable_at_startup = 1

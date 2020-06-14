@@ -83,3 +83,36 @@
 # Laravel Integration
 - repo: noahfrederick/vim-composer
 - repo: noahfrederick/vim-laravel
+
+# Graphql Integation
+
+- repo: heavenshell/vim-gql
+  on_cmd: Gql
+  hook_source: |
+      let g:gql_servers = [
+        \ {
+        \   'host': 'https://api.github.com/graphql',
+        \   'headers': {'Authorization': 'bearer YOUR_TOKEN'},
+        \ },
+        \ {
+        \   'host': 'https://api.spacex.land/graphql/',
+        \   'headers': {'Content-Type': 'application/json'},
+        \ },
+        \ {
+        \   'host': 'http://localhost:8000/graphql/',
+        \   'headers': {'Content-Type': 'application/json'},
+        \ },
+        \]
+# Required for gql
+- repo: mattn/webapi-vim
+
+# Better expereince editing html files
+# - repo: mattn/emmet-vim
+#   on_event: InsertEnter
+#   on_ft: [ html, css, jsx, javascript, javascript.jsx ]
+#   hook_source: |
+#     let g:use_emmet_complete_tag = 0
+#     let g:user_emmet_install_global = 0
+#     let g:user_emmet_install_command = 0
+#     let g:user_emmet_mode = 'i'
+# 

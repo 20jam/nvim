@@ -1,7 +1,10 @@
-
 if has('vim_starting')
   set encoding=UTF-8 
   scriptencoding UTF-8 
+endif
+
+if has("autocmd")
+  filetype plugin indent on
 endif
 
 set conceallevel=2
@@ -19,7 +22,7 @@ endif
 " show whitespace
 set list
 set listchars=nbsp:⦸
-set listchars=tab:\ \
+set listchars=tab:\¦\ " Required comment
 " set listchars+=extends:»
 " set listchars+=precedes:«
 " set listchars+=trail:•
@@ -419,6 +422,7 @@ set autowrite
 " set autowriteall
 " Raise a dialog before closing thr buffee
 set confirm
+set nowritebackup
 
 set undodir=$DATA_PATH/undo//,$DATA_PATH,~/tmp,/var/tmp,/tmp
 set backupdir=$DATA_PATH/backup/,$DATA_PATH,~/tmp,/var/tmp,/tmp
@@ -426,4 +430,21 @@ set viewdir=$DATA_PATH/view/
 set spellfile=$VIM_PATH/spell/en.utf-8.add
 
 " }}}
-"
+
+" Foldtext {{{
+
+set foldtext=utils#foldtext()
+
+function! NeatFoldText()
+    let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+    let lines_count = v:foldend - v:foldstart + 1
+    let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+    let foldchar = matchstr(&fillchars, 'fold:\zs.')
+    let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel) . line, 0, (winwidth(0)*2)/3)
+    let foldtextend = lines_count_text . repeat(foldchar, 8)
+    let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+    return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+endfunction
+autocmd FileType markdown setlocal foldtext=NeatFoldText()
+
+"}}}

@@ -32,9 +32,9 @@
 # - { repo: terryma/vim-expand-region, on_map: { x: <Plug> }}
   
 # Delete sroundings 
-- repo: AndrewRadev/dsf.vim
-  on_map: { n: <Plug>Dsf }
-  hook_add: let g:dsf_no_mappings = 1
+# - repo: AndrewRadev/dsf.vim
+#   on_map: { n: <Plug>Dsf }
+#   hook_add: let g:dsf_no_mappings = 1
 
 # Replace operator
 - repo: kana/vim-operator-replace
@@ -52,11 +52,16 @@
 - { repo: wellle/targets.vim, merged: 0 }
 
 # Match parans
-- repo: itchyny/vim-parenmatch
+# - repo: itchyny/vim-parenmatch
 
 # Autopair
-- repo: Raimondi/delimitMate
+# - repo: Raimondi/delimitMate
+# Autopair
+# - repo: tmsvg/pear-tree
+# - repo: reconquest/vim-autosurround 
+# - repo: KaraMCC/vim-gemini
 
+- repo: cohama/lexima.vim
 # Align columns of text NOTE: Doesn't work
 - repo: junegunn/vim-easy-align
 
